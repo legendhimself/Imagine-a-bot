@@ -3,11 +3,23 @@ module.exports = {
     let args = x[0];
     let ans = 1;
     for (let i = 0; i < args.length; ) {
-      const arg = args[i];
+      try {
+        if (args[i].split("").includes(".")) {
+          var arg = parseFloat(args[i]);
+        } else {
+          arg = parseInt(args[i]);
+        }
+      } catch (error) {
+        return "Please Provide valid Numbers";
+      }
       ans = ans * arg;
       i++;
       if (i === args.length) {
-        return ans;
+        if (ans.toString() == "NaN") {
+          return "Please Provide valid Numbers";
+        } else {
+          return ans;
+        }
       }
     }
   },
@@ -22,12 +34,16 @@ module.exports = {
           arg = parseInt(args[i]);
         }
       } catch (error) {
-        console.log(error);
+        return "Please Provide valid Numbers";
       }
       ans = ans + arg;
       i++;
       if (i === args.length) {
-        return ans;
+        if (ans.toString() == "NaN") {
+          return "Please Provide valid Numbers";
+        } else {
+          return ans;
+        }
       }
     }
   },
