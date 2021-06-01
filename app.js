@@ -3,7 +3,6 @@ const Discord = require("discord.js");
 const client = new Discord.Client();
 const { multiply, add } = require("./functions/calc");
 const { prefix } = require("./config.json");
-let token = process.env.Token;
 client.on("ready", async () => {
   console.log("The bot is online");
 });
