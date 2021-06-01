@@ -18,10 +18,8 @@ module.exports = {
       try {
         if (args[i].split("").includes(".")) {
           var arg = parseFloat(args[i]);
-          console.log(arg);
         } else {
           arg = parseInt(args[i]);
-          console.log(arg, "else");
         }
       } catch (error) {
         console.log(error);
