@@ -47,4 +47,28 @@ module.exports = {
       }
     }
   },
+  sub: (...x) => {
+    //...x [[100, 30, 20]]
+    let args = x[0]; // [100, 30, 20]
+    let ans = null;
+    let ct = 0;
+    for (let i = 0; i < args.length; ) {
+      if (i == 0) {
+        let arg = args[i]; // 100
+        let num2 = args[i + 1]; //30
+        ans = arg - num2;
+      }
+      if (args.length > 2) {
+        if (i == ct) {
+          ct++;
+          let arg = args[i + 2];
+          if (arg) {
+            ans = ans - arg;
+          }
+        }
+      }
+      i++;
+    }
+    return ans;
+  },
 };

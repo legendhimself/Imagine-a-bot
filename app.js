@@ -8,7 +8,7 @@ client.on("ready", async () => {
 });
 
 client.on("message", async (message) => {
-  if (message.content.toLowerCase().startsWith(`${prefix}cal`)) {
+  if (message.content.toLowerCase().startsWith(`${prefix}`)) {
     const args = message.content.slice(prefix.length).trim().split(/ +/g);
     let cmd = args.shift().toLowerCase();
     if (cmd === "cal") {
