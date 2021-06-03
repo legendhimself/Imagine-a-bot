@@ -15,7 +15,7 @@ module.exports = {
       ans = ans * arg;
       i++;
       if (i === args.length) {
-        if (ans.toString() == "NaN") {
+        if (isNaN(ans)) {
           return "Please Provide valid Numbers";
         } else {
           return ans;
@@ -39,7 +39,7 @@ module.exports = {
       ans = ans + arg;
       i++;
       if (i === args.length) {
-        if (ans.toString() == "NaN") {
+        if (isNaN(ans)) {
           return "Please Provide valid Numbers";
         } else {
           return ans;
@@ -54,21 +54,42 @@ module.exports = {
     let ct = 0;
     for (let i = 0; i < args.length; ) {
       if (i == 0) {
-        let arg = args[i]; // 100
-        let num2 = args[i + 1]; //30
-        ans = arg - num2;
+        try {
+          if (args[i].split("").includes(".")) {
+            var arg = parseFloat(args[i]); // 100
+            var num2 = parseFloat(args[i + 1]);
+          } else {
+            arg = parseInt(args[i]); // 100
+            num2 = parseInt(args[i + 1]); //30
+          }
+        } catch (error) {
+          return "Please Provide valid Numbers";
+        }
+        ans = arg - num2; //subtract over here
       }
       if (args.length > 2) {
         if (i == ct) {
           ct++;
-          let arg = args[i + 2];
-          if (arg) {
-            ans = ans - arg;
+          try {
+            if (args[i].split("").includes(".")) {
+              var arg1 = parseFloat(args[i + 2]);
+            } else {
+              arg1 = parseInt(args[i + 2]);
+            }
+          } catch (error) {
+            return "Please Provide valid Numbers";
           }
+          ans = ans - arg1;
         }
       }
       i++;
+      if (i === args.length) {
+        if (isNaN(ans)) {
+          return "Please Provide valid Numbers";
+        } else {
+          return ans;
+        }
+      }
     }
-    return ans;
   },
 };
